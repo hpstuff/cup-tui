@@ -1,0 +1,26 @@
+[package]
+name = "cup-tui"
+version = "0.1.0"
+edition = "2021"
+description = "Fullscreen terminal UI for ClickUp, built on the cup CLI"
+
+[[bin]]
+name = "cup-tui"
+path = "src/main.rs"
+
+[dependencies]
+ratatui = "0.29"
+crossterm = "0.28"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "process", "sync", "time"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+unicode-width = "0.2"
+chrono = "0.4"
+tempfile = "3"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
