@@ -23,20 +23,37 @@ Browse spaces → folders → lists → tasks, read and edit tasks, comment, cha
 - Rust toolchain (`cargo`) to build.
 - Optional: `$VISUAL` / `$EDITOR` for comments and descriptions (falls back to `vi`).
 
-## Build & run
+## Install
+
+With Homebrew (macOS and Linux). This repository is also the tap, so it is tapped by URL once:
+
+```bash
+brew tap hpstuff/cup-tui https://github.com/hpstuff/cup-tui
+brew install cup-tui
+```
+
+Homebrew asks you to trust third-party taps the first time; answer yes, or run
+`brew trust --tap https://github.com/hpstuff/cup-tui` beforehand. `brew install --HEAD cup-tui` builds the
+latest `main` instead of the last release. The formula builds from source with Homebrew's `rust`, so the first
+install takes a minute or two. Later versions arrive with `brew update && brew upgrade cup-tui`.
+
+From a checkout:
+
+```bash
+cargo install --path .
+```
+
+Or just build and run:
 
 ```bash
 cargo build --release
 ./target/release/cup-tui
 ```
 
-Install it on your `PATH`:
+### Releasing (maintainers)
 
-```bash
-cargo install --path .
-```
-
-Options: `-p, --profile NAME` uses a cup profile; `--cup PATH` (or `$CUP_BIN`) points at a different cup binary.
+`scripts/release.sh X.Y.Z` bumps the version, tags, pushes, creates the GitHub release and updates
+`Formula/cup-tui.rb` with the tarball checksum. Because the repo is the tap, that push is the release.
 
 ## Layout
 
