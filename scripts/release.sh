@@ -21,7 +21,11 @@ echo "▸ bumping Cargo.toml to $VERSION"
 sed -i '' -E "0,/^version = \".*\"/s//version = \"$VERSION\"/" Cargo.toml
 cargo build --release
 git add Cargo.toml Cargo.lock
-git commit -m "Release $TAG"
+if git diff --cached --quiet; then
+  echo "  version already $VERSION, nothing to commit"
+else
+  git commit -m "Release $TAG"
+fi
 git tag -a "$TAG" -m "cup-tui $TAG"
 git push origin main "$TAG"
 
