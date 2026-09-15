@@ -18,7 +18,7 @@ cd "$(dirname "$0")/.."
 [[ "$(git branch --show-current)" == "main" ]] || { echo "switch to main first"; exit 1; }
 
 echo "▸ bumping Cargo.toml to $VERSION"
-sed -i '' -E "0,/^version = \".*\"/s//version = \"$VERSION\"/" Cargo.toml
+sed -i '' -E "s/^version = \".*\"/version = \"$VERSION\"/" Cargo.toml
 cargo build --release
 git add Cargo.toml Cargo.lock
 if git diff --cached --quiet; then
