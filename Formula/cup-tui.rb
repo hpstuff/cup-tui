@@ -6,7 +6,7 @@ class CupTui < Formula
   desc "Fullscreen terminal UI for ClickUp, built on the cup CLI"
   homepage "https://github.com/hpstuff/cup-tui"
   url "https://github.com/hpstuff/cup-tui/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "d8eb7885ff1ac38baac563082c38bddbc5a8cd0fd665331eb0b84e20ecd22756"
   head "https://github.com/hpstuff/cup-tui.git", branch: "main"
 
   depends_on "rust" => :build
