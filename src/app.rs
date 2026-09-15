@@ -1202,8 +1202,10 @@ impl App {
             }
         };
         roots.sort_by_key(|&i| sort_key(i));
+        // subtasks always keep their natural (default) order, independent of
+        // whatever sort mode is applied to the top-level list
         for v in children.values_mut() {
-            v.sort_by_key(|&i| sort_key(i));
+            v.sort_by_key(|&i| i);
         }
 
         struct Walk<'a> {
